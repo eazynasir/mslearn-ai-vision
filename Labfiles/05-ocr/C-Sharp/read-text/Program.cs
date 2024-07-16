@@ -126,9 +126,10 @@ namespace read_text
                 }
 
                 //Save image
-                string output_file = "text.jpg";
-                image.Save(output_file);
+                String ouput_file = "text.jpg";
+                Image.Save(output_file);
                 Console.WriteLine("\nResults saved in " + output_file + "\n");
+
             }
     
         }

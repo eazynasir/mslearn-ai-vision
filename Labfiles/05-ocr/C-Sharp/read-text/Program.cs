@@ -99,23 +99,26 @@ namespace read_text
 
 
                     //Return each word detected in the image and the position bounding box around each word with the confidence level of each word
+                    foreach (DetectedTextWord word in line.Words)
+                    {
+                        Console.WriteLine($"    Word: '{word.Text}', Confidence {word.Confidence:F4}, Bounding Polygon: [{string.Join(" ", word.BoundingPolygon)}]");
+                    }
 
 
                     //Draw line bounding polygon
-                    if (drawLinePolygon)
-                    {
-                        var r = line.BoundingPolygon;
+                    drawLinePolygon = false;
+                    var r = line.BoundingPolygon;
 
-                        Point[] polygonPoints = {
-                            new Point(r[0].X, r[0].Y),
-                            new Point(r[1].X, r[1].Y),
-                            new Point(r[2].X, r[2].Y),
-                            new Point(r[3].X, r[3].Y)
-                        };
+                    Point[] polygonPoints = {
+                        new Point(r[0].X, r[0].Y),
+                        new Point(r[1].X, r[1].Y),
+                        new Point(r[2].X, r[2].Y),
+                        new Point(r[3].X, r[3].Y)
+                    };
 
-                        graphics.DrawPolygon(pen, polygonPoints);
+                    graphics.DrawPolygon(pen, polygonPoints);
 
-                    }
+                }
                     
 
 
